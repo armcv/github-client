@@ -1,0 +1,31 @@
+.timeline .timeline-item .card {
+	max-height: 300px;
+}
+
+.timeline .timeline-item {
+    display: flex;
+    position: relative;
+}
+
+.timeline .timeline-item::before {
+    background: #dadee4;
+    content: "";
+    height: 100%;
+    left: 19px;
+    position: absolute;
+    top: 20px;
+    width: 2px;
+		z-index: -1;
+}
+
+.timeline .timeline-item .timeline-icon .badge {
+		margin-top: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.timeline .timeline-item .timeline-content {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0 0 0 1rem;
+}
