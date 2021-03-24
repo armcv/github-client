@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Commit } from 'src/app/models/commit';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-commit',
@@ -6,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./commit.component.css']
 })
 export class CommitComponent implements OnInit {
-
+  faCheckCircle = faCheckCircle;
+  @Input() commit: Commit = new Commit();
   constructor() { }
 
   ngOnInit(): void {
