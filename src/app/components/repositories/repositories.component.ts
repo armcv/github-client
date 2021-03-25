@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RepositoriesService } from '../../services/repositories.service';
 import { Repository } from '../../models/repository';
 
+
 @Component({
   selector: 'app-repositories',
   templateUrl: './repositories.component.html',
@@ -9,6 +10,7 @@ import { Repository } from '../../models/repository';
 })
 export class RepositoriesComponent implements OnInit {
   repositories: Repository[] = [];
+
   constructor(private repositoriesService: RepositoriesService) { }
 
   ngOnInit(): void {

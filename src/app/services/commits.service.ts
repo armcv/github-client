@@ -6,18 +6,17 @@ import { CommitsReposResponse } from "../models/commit";
 @Injectable({
   providedIn: 'root'
 })
+
 export class CommitsService {
   public method: string;
-  public endpoint: string;
 
   constructor(private githubService: GithubService) {
-    this.endpoint = '/repos/armcv/apostrophe-passport/commits';
     this.method = 'GET';
   }
 
-  async getCommits(){
+  async getCommits(repository: string){
     let client = this.githubService.getInstance();
-    let option = `${this.method} ${this.endpoint}`;
+    let option = `${this.method} /repos/armcv/${repository}/commits`;
 
     return await client.request(option) as CommitsReposResponse;
   }

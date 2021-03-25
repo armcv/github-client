@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CommitsService } from '../../services/commits.service';
 import { Commit, Commits } from '../../models/commit';
 
@@ -9,18 +10,20 @@ import { Commit, Commits } from '../../models/commit';
 })
 export class CommitsComponent implements OnInit {
   commits: Commits = [];
-  constructor(private commitsService: CommitsService) { }
+  constructor(private commitsService: CommitsService, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-    this.commitsService.getCommits().then(res => {
-      const { status, data } = res;
-      if(status === 200){
-        data.forEach((element: Commit) => {
-          this.commits.push(element);
-        });
-      }
-
-    });
+    const repo = this.route.snapshot.paramMap.get('repository');
+    if(repo){
+      this.commitsService.getCommits(repo).then(res => {
+        const { status, data } = res;
+        if(status === 200){
+          data.forEach((element: Commit) => {
+            this.commits.push(element);
+          });
+        }
+      });
+    }
   }
 
 }
