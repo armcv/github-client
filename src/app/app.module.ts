@@ -9,6 +9,7 @@ import { CommitsComponent } from './components/commits/commits.component';
 import { CommitComponent } from './components/commit/commit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RepositoriesComponent } from './components/repositories/repositories.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RepositoriesComponent } from './components/repositories/repositories.co
     ProfileComponent,
     CommitsComponent,
     CommitComponent,
-    RepositoriesComponent
+    RepositoriesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

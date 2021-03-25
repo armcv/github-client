@@ -1,0 +1,11 @@
+<h4>Welcome</h4>
+<div *ngIf="status === 200 else elseBlock">
+  <div class="alert alert-success" role="alert">
+    GitHub REST Api is available
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="alert alert-danger" role="alert">
+    Error connecting with GitHub REST Api
+  </div>
+</ng-template>

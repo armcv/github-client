@@ -15,7 +15,6 @@ export class RepositoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.repositoriesService.getRepos().then(res => {
-      console.log(res);
       const { status, data } = res;
       if (status === 200) {
         data.forEach((element) => {
