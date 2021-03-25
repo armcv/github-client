@@ -10,6 +10,7 @@ import { CommitComponent } from './components/commit/commit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RepositoriesComponent } from './components/repositories/repositories.component';
 import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HomeComponent } from './components/home/home.component';
     CommitsComponent,
     CommitComponent,
     RepositoriesComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
