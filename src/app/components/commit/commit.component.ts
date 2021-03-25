@@ -9,7 +9,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class CommitComponent implements OnInit {
   faCheckCircle = faCheckCircle;
-  @Input() commit: Commit = new Commit();
+  @Input() commit!: Commit;
   constructor() { }
 
   ngOnInit(): void {

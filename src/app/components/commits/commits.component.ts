@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommitsService } from '../../services/commits.service';
-import { Commit } from '../../models/commit';
+import { Commit, Commits } from '../../models/commit';
 
 @Component({
   selector: 'app-commits',
@@ -8,22 +8,15 @@ import { Commit } from '../../models/commit';
   styleUrls: ['./commits.component.css']
 })
 export class CommitsComponent implements OnInit {
-  commits: Commit[] = [];
+  commits: Commits = [];
   constructor(private commitsService: CommitsService) { }
 
   ngOnInit(): void {
     this.commitsService.getCommits().then(res => {
-      console.log(res);
       const { status, data } = res;
       if(status === 200){
-        data.forEach((element: { commit?: any; sha?: any; committer?: any; }) => {
-          let commit = new Commit();
-          let { sha } = element;
-          commit.sha = sha;
-          commit.commiter = element.commit.committer.name;
-          commit.date = element.commit.committer.date;
-          commit.message = element.commit.message;
-          this.commits.push(commit);
+        data.forEach((element: Commit) => {
+          this.commits.push(element);
         });
       }
 
