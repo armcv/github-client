@@ -1,6 +1,18 @@
 # GithubClient
 
-This project has a backend with express and a fronted that consists of an Angular app generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+This project has a backend with express and a fronted that consists of an Angular app generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5. The project show user profile, public repositories and commits.
+
+## Change github user
+
+In the file located in the folder /frontend/src/environments/environment.ts you will find this code:
+
+    export const environment = {
+        production: false,
+        backendUrl: 'http://localhost:3000',
+        username: '{github_user}'
+    };
+
+In this code you can set the user your Github user.
 
 ## Frontend
 
