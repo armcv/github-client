@@ -1,0 +1,14 @@
+version: "3.1"
+
+services:
+  github:
+    image: github-client:latest
+    restart: always
+    ports:
+      - 4200:4200
+    volumes:
+      - logs:/var/log/supervisor
+
+
+volumes:
+  logs:
