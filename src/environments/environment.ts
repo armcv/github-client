@@ -5,8 +5,7 @@
 export const environment = {
   production: false,
   backendUrl: 'http://localhost:3000',
-  username: 'armcv',
-  token: '8f49f37aeffb5c353ac5a43a5cdc63b37f6b8e7d'
+  username: 'armcv'
 };
 
 /*
