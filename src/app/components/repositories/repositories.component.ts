@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RepositoriesService } from '../../services/repositories.service';
-import { Repository } from '../../models/repository';
+import { Repositories } from '../../models/github';
 
 
 @Component({
@@ -9,16 +9,16 @@ import { Repository } from '../../models/repository';
   styleUrls: ['./repositories.component.css']
 })
 export class RepositoriesComponent implements OnInit {
-  repositories: Repository[] = [];
+  repositories: Repositories = [];
 
   constructor(private repositoriesService: RepositoriesService) { }
 
   ngOnInit(): void {
-    this.repositoriesService.getRepos().then(res => {
+    this.repositoriesService.getRepos().subscribe(res => {
       const { status, data } = res;
       if (status === 200) {
         data.forEach((element) => {
-          this.repositories.push(element as Repository);
+          this.repositories.push(element);
         });
       }
     })

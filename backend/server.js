@@ -15,33 +15,51 @@ app.get('/', (req, res) => {
 });
 
 app.get('/status', async (req, res) => {
-  const status = await octokit.request('GET /');
+  try {
+    const status = await octokit.request('GET /');
+    res.send(status);
+  } catch (error) {
+    res.send(error);
+  }
 
-  res.send(status);
 });
 
 app.get('/profile/:username', async (req, res) => {
-  const username = req.params.username;
-  const request = `GET /users/${username}`;
-  const profile = await octokit.request(request);
+  try {
+    const username = req.params.username;
+    const request = `GET /users/${username}`;
+    const profile = await octokit.request(request);
 
-  res.send(profile);
+    res.send(profile);
+  } catch (error) {
+    res.status(error.status).send(error);
+  }
+
+
 });
 
 app.get('/commits/:username/:repo', async (req, res) => {
-  const { repo, username } = req.params;
-  const request = `GET /repos/${username}/${repo}/commits`
-  const commits = await octokit.request(request);
+  try {
+    const { repo, username } = req.params;
+    const request = `GET /repos/${username}/${repo}/commits`
+    const commits = await octokit.request(request);
 
-  res.send(commits);
+    res.send(commits);
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 app.get('/repos/:username', async (req, res) => {
-  const username = req.params.username;
-  const request = `GET /users/${username}/repos`;
-  const repos = await octokit.request(request);
+  try {
+    const username = req.params.username;
+    const request = `GET /users/${username}/repos`;
+    const repos = await octokit.request(request);
 
-  res.send(repos);
+    res.send(repos);
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 app.listen(3000, () => {

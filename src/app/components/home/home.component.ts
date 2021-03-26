@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private githubService: GithubService) { }
 
   ngOnInit(): void {
-    this.githubService.apiStatus().then(res => {
+    this.githubService.apiStatus().subscribe(res => {
       this.status = res.status;
     })
   }

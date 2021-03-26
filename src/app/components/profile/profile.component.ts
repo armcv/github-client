@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from '../../models/profile';
+import { Profile } from '../../models/github';
 import { ProfileService } from '../../services/profile.service';
 
 @Component({
@@ -9,22 +9,12 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: Profile = new Profile();
+  profile!: Profile;
 
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.profileService.getProfile('armcv').then(res => {
-      const { status, data } = res;
-      if(status === 200){
-        this.profile.id = data.id;
-        this.profile.avatar = data.avatar_url;
-        this.profile.login = data.login;
-        this.profile.bio = data.bio;
-        this.profile.name = data.name;
-      }
-    });
-
+    this.profileService.getProfile().subscribe(res => this.profile = res.data );
   }
 
 }
